@@ -34,7 +34,7 @@ class Book(models.Model):
     stock = models.IntegerField(default=0)
     rating = models.IntegerField( null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=True)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.title}: {self.author} ==> stock: {self.stock} '
