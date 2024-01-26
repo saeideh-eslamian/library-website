@@ -1,10 +1,16 @@
 FROM python:3
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY requirements.txt ./
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "./manage.py" ]
+# Copy the .env file to the container
+COPY .env .
+
+# Set environment variable for decouple to read the .env file
+ENV DJANGO_READ_DOT_ENV_FILE True
+
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]

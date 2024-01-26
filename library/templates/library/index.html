@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{% static "/library/styles/index.css" %}'>
+    <title>Home</title>
+    
+</head>
+<body>
+    <main>
+        <div class="container">
+            <header>
+                <div class="user-profile">
+                    <span>Welcome, John Doe</span>
+                    <a href="/user-profile">View Profile</a>
+                </div>
+                <h1>WELCOME TO MY LIBRARY</h1>
+            </header>
+
+            <section class="search-section">
+                <h2>Search in Library</h2>
+                <form action="#" method="GET">
+                    <input type="text" name="search" placeholder="Enter book title or author">
+                    <button type="submit">Search</button>
+                </form>
+            </section>
+
+            <section class="most-read-section">
+                <h2>Most Read Books</h2>
+                <div class="book-card">
+                    <img src="book1.jpg" alt="Book 1">
+                    <h3>Book Title 1</h3>
+                    <p>Author: Author Name 1</p>
+                </div>
+
+                <div class="book-card">
+                    <img src="book2.jpg" alt="Book 2">
+                    <h3>Book Title 2</h3>
+                    <p>Author: Author Name 2</p>
+                </div>
+
+                <!-- Add more book cards as needed -->
+            </section>
+        </div>
+
+    </main>
+</body>
+</html>

@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 
-# Create your views here.
+def index(request):
+    context = [
+        {'title':'harry potter'},
+        {'title': 'learn python'},
+        {'title': 'learn Django'},
+    ]
+
+
+        
+    return render(request, 'library/index.html', {'context':context})
