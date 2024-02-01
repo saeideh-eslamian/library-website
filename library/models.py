@@ -3,6 +3,7 @@ from django.db import models
 
 class Author(models.Model):
     name = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='images', null=True, blank=True)
     about = models.TextField(blank=True)
 
     def __str__(self) -> str:
@@ -30,6 +31,7 @@ class Comment(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=200, unique=True)
+    image = models.ImageField(upload_to='images', null=True, blank=True)
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     stock = models.IntegerField(default=0)
     rating = models.IntegerField( null=True, blank=True)

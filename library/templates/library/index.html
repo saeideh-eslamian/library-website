@@ -16,7 +16,7 @@
                     <span>Welcome, John Doe</span>
                     <a href="/user-profile">View Profile</a>
                 </div>
-                <h1>WELCOME TO MY LIBRARY</h1>
+                <h1>WELLCOME To MY LIBRARY</h1>
             </header>
 
             <section class="search-section">
@@ -30,16 +30,22 @@
             <section class="most-read-section">
                 <h2>Most Read Books</h2>
                 <div class="book-card">
-                    <img src="book1.jpg" alt="Book 1">
-                    <h3>Book Title 1</h3>
-                    <p>Author: Author Name 1</p>
+                    {% if book_found %}
+                        {% for book in books %}
+                            <div class="image">
+                                {% if book.image %}
+                                    <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                                {% else %}
+                                    <p>No image available for {{ book.title }}</p>
+                                {% endif %}
+                            </div>
+                            <h3>{{ book.title }}</h3>
+                            <p>{{ book.author }}</p>
+                        {% endfor %}
+                    {% endif %}    
                 </div>
 
-                <div class="book-card">
-                    <img src="book2.jpg" alt="Book 2">
-                    <h3>Book Title 2</h3>
-                    <p>Author: Author Name 2</p>
-                </div>
+
 
                 <!-- Add more book cards as needed -->
             </section>
