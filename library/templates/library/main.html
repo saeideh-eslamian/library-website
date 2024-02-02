@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}my library{%endblock title%}</blockquote></title>
+    <link rel="stylesheet" href="{% static '/library/styles/main.css' %}">
+    {% block style %}{% endblock style %}
+</head>
+
+<body>
+    <header>
+            <div class="user-profile">
+                <span>Welcome, John Doe</span>
+                <a href="/user-profile">View Profile</a>
+            </div>
+            <h1>WELLCOME To MY LIBRARY</h1>
+        
+        <nav>
+            <!-- Navigation links go here -->
+        </nav>
+    </header>
+
+    <main class="container">
+    {% block content %}
+        <!-- Your content goes here -->
+    {% endblock %}
+    </main>
+    
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Your Library</p>
+            <p>Contact us: info@yourlibrary.com</p>
+        </div>
+    </footer>
+
+</body>
+</html>

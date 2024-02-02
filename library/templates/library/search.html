@@ -1,0 +1,28 @@
+{% extends 'library/main.html' %}
+{% load static %}
+
+{% block title %} search {% endblock title %}
+
+{% block content %}
+
+<section class="search-section">
+    <h2>Search in Library</h2>
+    <form method="get" action="{% url 'book_search' %}">
+        <input type="text" name="query" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    <section class="most-read-section"></section>
+    {% if find_books %}
+        <h2>Search Results</h2>
+        <ul>
+            {% for book in find_books %}
+                <li>{{ book.title }} by {{ book.author }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Results</p>    
+    {% endif %}
+</section>
+</section>
+
+{% endblock content %}

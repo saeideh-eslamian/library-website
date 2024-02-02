@@ -1,56 +1,48 @@
+{% extends 'library/main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% block style %}
     <link rel="stylesheet" href='{% static "/library/styles/index.css" %}'>
-    <title>Home</title>
-    
-</head>
-<body>
-    <main>
-        <div class="container">
-            <header>
-                <div class="user-profile">
-                    <span>Welcome, John Doe</span>
-                    <a href="/user-profile">View Profile</a>
+{% endblock style %}
+
+{% block title %} my library {% endblock title %}
+
+{% block content %}
+
+<section class="search-section">
+    <h2>Search in Library</h2>
+    <form method="get" action="{% url 'book_search' %}">
+        <input type="text" name="query" placeholder="Input a part of book title or author name">
+        <button type="submit">Search</button>
+    </form>
+    {% if find_books %}
+        <h2>Search Results</h2>
+        <ul>
+            {% for book in find_books %}
+                <li>{{ book.title }} by {{ book.author }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+
+<section class="most-read-section">
+    <h2>Most Read Books</h2>
+    <div class="book-card">
+        {% if books %}
+            {% for book in books %}
+                <div class="image">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                    {% else %}
+                        <p>No image available for {{ book.title }}</p>
+                    {% endif %}
                 </div>
-                <h1>WELLCOME To MY LIBRARY</h1>
-            </header>
-
-            <section class="search-section">
-                <h2>Search in Library</h2>
-                <form action="#" method="GET">
-                    <input type="text" name="search" placeholder="Enter book title or author">
-                    <button type="submit">Search</button>
-                </form>
-            </section>
-
-            <section class="most-read-section">
-                <h2>Most Read Books</h2>
-                <div class="book-card">
-                    {% if book_found %}
-                        {% for book in books %}
-                            <div class="image">
-                                {% if book.image %}
-                                    <img src="{{ book.image.url }}" alt="{{ book.title }}">
-                                {% else %}
-                                    <p>No image available for {{ book.title }}</p>
-                                {% endif %}
-                            </div>
-                            <h3>{{ book.title }}</h3>
-                            <p>{{ book.author }}</p>
-                        {% endfor %}
-                    {% endif %}    
-                </div>
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }}</p>
+            {% endfor %}
+        {% endif %}    
+    </div>
+</section>
 
 
-
-                <!-- Add more book cards as needed -->
-            </section>
-        </div>
-
-    </main>
-</body>
-</html>
+{% endblock content %}
