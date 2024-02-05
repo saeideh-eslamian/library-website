@@ -1,6 +1,6 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,get_object_or_404
 from django.db.models import Q
-from .models import Book
+from .models import Book, Author
 from .forms import BookSearchForm
 
 
@@ -19,6 +19,7 @@ def index(request):
    
     return render(request, 'library/index.html', context=context)
 
+
 def book_search(request):
     search_form = BookSearchForm(request.GET)
     find_books = []
@@ -35,4 +36,13 @@ def book_search(request):
         'find_books': find_books,
     }        
 
-    return render(request,'library/search.html', context=context )        
+    return render(request,'library/search.html', context=context )   
+
+
+def book_detail(request, book_slug):
+    book = get_object_or_404(Book, slug=book_slug)
+    context = {
+        'book': book,
+    }
+
+    return render(request, 'library/book.html', context=context)

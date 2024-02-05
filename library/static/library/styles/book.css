@@ -1,0 +1,42 @@
+.book-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .book-cover {
+    max-width: 450px;
+    height: auto;
+  }
+  
+  .book-details {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+  
+  .book-title {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .author {
+    font-style: italic;
+    margin: 5px 0;
+  }
+  
+  .description {
+    margin: 10px 0;
+  }
+  
+  .rating, .comment {
+    margin: 5px 0;
+  }
+  
+  label {
+    margin-right: 10px;
+  }

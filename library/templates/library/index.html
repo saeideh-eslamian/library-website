@@ -17,9 +17,10 @@
     </form>
     {% if find_books %}
         <h2>Search Results</h2>
-        <ul>
+        <ul class='book'>
             {% for book in find_books %}
-                <li>{{ book.title }} by {{ book.author }}</li>
+                <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                <a href="{% url 'book_detail' book.slug %}" ><h3>{{ book.title }}</h3></a>  
             {% endfor %}
         </ul>
     {% endif %}
@@ -30,15 +31,17 @@
     <div class="book-card">
         {% if books %}
             {% for book in books %}
-                <div class="image">
-                    {% if book.image %}
-                        <img src="{{ book.image.url }}" alt="{{ book.title }}">
-                    {% else %}
-                        <p>No image available for {{ book.title }}</p>
-                    {% endif %}
+                <div class="book">
+                    <div class="image">
+                        {% if book.image %}
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                        {% else %}
+                            <p>No image available for {{ book.title }}</p>
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'book_detail' book.slug %}" ><h3>{{ book.title }}</h3></a>               
+                    <p>{{ book.author }}</p>
                 </div>
-                <h3>{{ book.title }}</h3>
-                <p>{{ book.author }}</p>
             {% endfor %}
         {% endif %}    
     </div>

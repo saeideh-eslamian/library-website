@@ -1,6 +1,10 @@
 {% extends 'library/main.html' %}
 {% load static %}
 
+{% block style %}
+    <link rel="stylesheet" href='{% static "/library/styles/index.css" %}'>
+{% endblock style %}
+
 {% block title %} search {% endblock title %}
 
 {% block content %}

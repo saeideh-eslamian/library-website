@@ -5,6 +5,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('title','author','stock')
     list_filter = ('author','rating')
     search_fields = ('title','description','author')
+    prepopulated_fields ={'slug': ('title', )}
 
 
 class AuthorAdmin(admin.ModelAdmin):

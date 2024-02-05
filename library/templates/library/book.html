@@ -1,0 +1,34 @@
+{% extends 'library/main.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href='{% static "/library/styles/book.css" %}'>
+{% endblock style %}
+
+{% block title %} {{book.title}} {% endblock title %}
+
+{% block content %}
+
+<div class="book-container">
+  {% if book.image %}
+    <img class="book-cover" src="{{ book.image.url }}" alt="{{ book.title }}">
+  {% else %}
+    <p>No image available for {{ book.title }}</p>
+  {% endif %}
+    <div class="book-details">
+      <h2 class="book-title">{{book.title}}</h2>
+      <p class="author">{{book.author}}</p>
+      <p class="rating">Rating: {{book.rating}}/10</p>
+      <label for="reservation">Available for Reservation:</label>
+      <input type="checkbox" id="reservation" name="reservation">
+    </div>
+  </div>
+  <div>
+    <h4>Description:</h4>
+    <p class="description">{{book.description}}</p>
+    </br>
+    <h4>Comments:</h4>
+    <p class="comment">Reader's Comment: This book is amazing!</p>
+  </div>
+
+{% endblock content %}
