@@ -40,7 +40,7 @@
                         {% endif %}
                     </div>
                     <a href="{% url 'book_detail' book.slug %}" ><h3>{{ book.title }}</h3></a>               
-                    <p>{{ book.author }}</p>
+                    <a href="{% url 'author_detail' book.author.id %}" ><p>{{ book.author }}</p>
                 </div>
             {% endfor %}
         {% endif %}    

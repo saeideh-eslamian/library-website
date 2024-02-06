@@ -1,0 +1,30 @@
+{% extends 'library/main.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href='{% static "/library/styles/book.css" %}'>
+{% endblock style %}
+
+{% block title %} {{author.name}} {% endblock title %}
+
+{% block content %}
+<div class="book-container">
+    {% if author.image %}
+      <img class="book-cover" src="{{ author.image.url }}" alt="{{ author.name }}">
+    {% else %}
+      <p>No image available for {{ author.name }}</p>
+    {% endif %}
+      <div class="book-details">
+        <h2 class="book-title">{{author.name}}</h2>
+        <h3>list books from this author:</h3>
+        {% for book in books_author %}
+            <a href="{% url 'book_detail' book.slug %}"><li class="author">{{book.title}}</li></a>
+        {% endfor %}    
+      </div>
+    </div>
+    <div>
+      <h4>About:</h4>
+      <p class="description">{{author.about}}</p>
+    </div>
+
+{% endblock content %}

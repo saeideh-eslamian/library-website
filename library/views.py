@@ -46,3 +46,14 @@ def book_detail(request, book_slug):
     }
 
     return render(request, 'library/book.html', context=context)
+
+
+def author_detail(request, id):
+    author = get_object_or_404(Author, id=id)
+    books_author = Book.objects.filter(author_id=id)
+    context = {
+        'author': author,
+        'books_author':books_author
+    }
+
+    return render(request, 'library/author.html', context=context)
